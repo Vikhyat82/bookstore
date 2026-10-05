@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Store</title>
+    <style>
+        /* Base page styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Layout using HTML table to match the traditional college assignment structure */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #333;
+        }
+
+        td, th {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Top header styling */
+        .header-bg {
+            background-color: #f2a879;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-bg {
+            background-color: #fce3d1;
+        }
+
+        /* Left Sidebar styling */
+        .sidebar {
+            width: 20%;
+            vertical-align: top;
+            text-align: left;
+            background-color: #f9f9f9;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Content area styling */
+        .main-content {
+            vertical-align: top;
+            text-align: left;
+            width: 80%;
+            padding: 20px;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: inline-block;
+            width: 120px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 5px;
+            width: 200px;
+        }
+
+        .btn {
+            padding: 5px 15px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        /* Catalogue Table */
+        .catalogue-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .catalogue-table td {
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        .book-img {
+            width: 60px;
+            height: 80px;
+            background-color: #ccc;
+            display: inline-block;
+            text-align: center;
+            line-height: 80px;
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Outer Web Structure -->
+    <table>
+        <!-- Header Row -->
+        <tr>
+            <td class="header-bg" style="width: 20%;">Logo</td>
+            <td class="header-bg" style="width: 80%;">WebSite Name</td>
+        </tr>
+
+        <!-- Navigation Bar -->
+        <tr class="nav-bg">
+            <td colspan="2">
+                <a href="#description">Home</a> | 
+                <a href="#login">Login</a> | 
+                <a href="#registration">Registration</a> | 
+                <a href="#catalogue">Catalogue</a> | 
+                <a href="#cart">Cart</a>
+            </td>
+        </tr>
+
+        <!-- Content Area: Left Frame (Sidebar) & Right Frame (Main Area) -->
+        <tr>
+            <!-- Left Frame Navigation -->
+            <td class="sidebar">
+                <ul>
+                    <li><a href="#catalogue">CSE</a></li>
+                    <li><a href="#catalogue">ECE</a></li>
+                    <li><a href="#catalogue">EEE</a></li>
+                    <li><a href="#catalogue">CIVIL</a></li>
+                </ul>
+            </td>
+
+            <!-- Right Frame Display Area -->
+            <td class="main-content">
+
+                <!-- 1. Description Section -->
+                <section id="description">
+                    <h2>Description of the WebSite</h2>
+                    <p>Welcome to the Online Bookstore. Select a department from the left menu to view the available books catalog, or navigate using the header links to register or log in.</p>
+                </section>
+
+                <hr>
+
+                <!-- 2. Login Page Section -->
+                <section id="login">
+                    <h2>Login Page</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="username">User Name:</label>
+                            <input type="text" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password">
+                        </div>
+                        <button type="submit" class="btn">Submit</button>
+                        <button type="reset" class="btn">Reset</button>
+                    </form>
+                </section>
+
+                <hr>
+
+                <!-- 3. Catalogue Section -->
+                <section id="catalogue">
+                    <h2>Catalogue (CSE Books)</h2>
+                    <table class="catalogue-table">
+                        <tr>
+                            <th>Cover</th>
+                            <th>Book Details</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td><div class="book-img">XML</div></td>
+                            <td>
+                                <strong>Book:</strong> XML Bible<br>
+                                <strong>Author:</strong> Winston<br>
+                                <strong>Publication:</strong> Wiley
+                            </td>
+                            <td>$40.5</td>
+                            <td><button class="btn">Add to cart</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="book-img">AI</div></td>
+                            <td>
+                                <strong>Book:</strong> AI<br>
+                                <strong>Author:</strong> S. Russel<br>
+                                <strong>Publication:</strong> Princeton Hall
+                            </td>
+                            <td>$63</td>
+                            <td><button class="btn">Add to cart</button></td>
+                        </tr>
+                        <tr>
+                            <td><div class="book-img">Java 2</div></td>
+                            <td>
+                                <strong>Book:</strong> Java 2<br>
+                                <strong>Author:</strong> Watson<br>
+                                <strong>Publication:</strong> BPB Publications
+                            </td>
+                            <td>$35.5</td>
+                            <td><button class="btn">Add to cart</button></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <hr>
+
+                <!-- 4. Cart Section -->
+                <section id="cart">
+                    <h2>Cart Page</h2>
+                    <table style="width:100%; border:1px solid #000;">
+                        <tr>
+                            <th>Book Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                        </tr>
+                        <tr>
+                            <td>Java 2</td>
+                            <td>$35.5</td>
+                            <td>2</td>
+                            <td>$71.0</td>
+                        </tr>
+                        <tr>
+                            <td>XML Bible</td>
+                            <td>$40.5</td>
+                            <td>1</td>
+                            <td>$40.5</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:right;"><strong>Total Amount:</strong></td>
+                            <td><strong>$111.5</strong></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <hr>
+
+                <!-- 5. Registration Section -->
+                <section id="registration">
+                    <h2>Registration Page</h2>
+                    <form onsubmit="return validateForm()">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input type="text" id="regName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" id="regPass" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail ID:</label>
+                            <input type="email" id="regEmail">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number:</label>
+                            <input type="tel" id="regPhone">
+                        </div>
+                        <div class="form-group">
+                            <label>Sex:</label>
+                            <input type="radio" name="sex" value="Male" style="width:auto;"> Male
+                            <input type="radio" name="sex" value="Female" style="width:auto;"> Female
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth:</label>
+                            <select style="width:60px;">
+                                <option>Day</option>
+                                <option>1</option><option>2</option>
+                            </select>
+                            <select style="width:70px;">
+                                <option>Month</option>
+                                <option>Jan</option><option>Feb</option>
+                            </select>
+                            <select style="width:70px;">
+                                <option>Year</option>
+                                <option>2000</option><option>2001</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Languages Known:</label>
+                            <input type="checkbox" style="width:auto;"> English
+                            <input type="checkbox" style="width:auto;"> Telugu
+                            <input type="checkbox" style="width:auto;"> Hindi
+                            <input type="checkbox" style="width:auto;"> Tamil
+                        </div>
+                        <div class="form-group">
+                            <label>Address:</label><br>
+                            <textarea rows="4" style="width:300px;"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </section>
+
+            </td>
+        </tr>
+    </table>
+
+    <!-- JavaScript Validation (Point 6 in assignment sheet) -->
+    <script>
+        function validateForm() {
+            var name = document.getElementById("regName").value;
+            var pass = document.getElementById("regPass").value;
+
+            // 1. Name validation: Alphabets only and length >= 6
+            var nameRegex = /^[A-Za-z]+$/;
+            if (name.length < 6 || !nameRegex.test(name)) {
+                alert("Name must contain alphabets only and be at least 6 characters long.");
+                return false;
+            }
+
+            // 2. Password validation: Length >= 6
+            if (pass.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+</body>
+</html>
