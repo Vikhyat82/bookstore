@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Online Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<table>
+    <tr>
+        <td class="header-bg logo">LOGO</td>
+        <td class="header-bg">Online Bookstore</td>
+    </tr>
+    <tr class="nav-bg">
+        <td colspan="2">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="registration.html">Registration</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="sidebar">
+            <ul>
+                <li><a href="catalogue.html">CSE</a></li>
+                <li><a href="catalogue.html">ECE</a></li>
+                <li><a href="catalogue.html">EEE</a></li>
+                <li><a href="catalogue.html">CIVIL</a></li>
+            </ul>
+        </td>
+        <td class="main-content">
+            <h2>Cart Page</h2>
+
+            <table id="cartTable">
+                <tr>
+                    <th>Book Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+
+            <h3 id="total">Total Amount: $0.00</h3>
+
+            <button class="btn" onclick="clearCart()">Clear Cart</button>
+            <a href="catalogue.html">Continue Shopping</a>
+        </td>
+    </tr>
+</table>
+
+<script>
+function displayCart() {
+    const cart = JSON.parse(localStorage.getItem("bookCart") || "[]");
+    const table = document.getElementById("cartTable");
+
+    table.innerHTML = `
+        <tr>
+            <th>Book Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>`;
+
+    let total = 0;
+
+    cart.forEach((book, index) => {
+        const amount = book.price * book.quantity;
+        total += amount;
+
+        const row = table.insertRow();
+        row.insertCell().textContent = book.name;
+        row.insertCell().textContent = "$" + book.price.toFixed(2);
+        row.insertCell().textContent = book.quantity;
+        row.insertCell().textContent = "$" + amount.toFixed(2);
+
+        const actionCell = row.insertCell();
+        const button = document.createElement("button");
+        button.textContent = "Remove";
+        button.className = "btn";
+        button.onclick = () => removeBook(index);
+        actionCell.appendChild(button);
+    });
+
+    if (cart.length === 0) {
+        const row = table.insertRow();
+        const cell = row.insertCell();
+        cell.colSpan = 5;
+        cell.textContent = "Your cart is empty.";
+    }
+
+    document.getElementById("total").textContent =
+        "Total Amount: $" + total.toFixed(2);
+}
+
+function removeBook(index) {
+    const cart = JSON.parse(localStorage.getItem("bookCart") || "[]");
+    cart.splice(index, 1);
+    localStorage.setItem("bookCart", JSON.stringify(cart));
+    displayCart();
+}
+
+function clearCart() {
+    localStorage.removeItem("bookCart");
+    displayCart();
+}
+
+displayCart();
+</script>
+
+</body>
+</html>
