@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue - Online Bookstore</title>
+    <title>Branch Catalogue - Online Bookstore</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,76 +14,41 @@
         <td class="header-bg logo">LOGO</td>
         <td class="header-bg">Online Bookstore</td>
     </tr>
+
     <tr class="nav-bg">
         <td colspan="2">
             <a href="index.html">Home</a>
             <a href="login.html">Login</a>
             <a href="registration.html">Registration</a>
-            <a href="catalogue.html">Catalogue</a>
+            <a href="catalogue.html?branch=CSE">Catalogue</a>
             <a href="cart.html">Cart</a>
         </td>
     </tr>
+
     <tr>
         <td class="sidebar">
             <ul>
-                <li><a href="catalogue.html">CSE</a></li>
-                <li><a href="catalogue.html">ECE</a></li>
-                <li><a href="catalogue.html">EEE</a></li>
-                <li><a href="catalogue.html">CIVIL</a></li>
+                <li><a href="catalogue.html?branch=CSE">CSE</a></li>
+                <li><a href="catalogue.html?branch=ECE">ECE</a></li>
+                <li><a href="catalogue.html?branch=EEE">EEE</a></li>
+                <li><a href="catalogue.html?branch=CIVIL">CIVIL</a></li>
             </ul>
         </td>
+
         <td class="main-content">
-            <h2>Catalogue (CSE Books)</h2>
+            <h2 id="branchTitle">Book Catalogue</h2>
+            <p id="branchDescription"></p>
 
             <table class="catalogue-table">
-                <tr>
-                    <th>Cover</th>
-                    <th>Book Details</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
-                    <td><div class="book-img">XML</div></td>
-                    <td>
-                        <strong>Book:</strong> XML Bible<br>
-                        <strong>Author:</strong> Winston<br>
-                        <strong>Publication:</strong> Wiley
-                    </td>
-                    <td>$40.5</td>
-                    <td>
-                        <button class="btn" onclick="addToCart('XML Bible', 40.5)">
-                            Add to cart
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><div class="book-img">AI</div></td>
-                    <td>
-                        <strong>Book:</strong> AI<br>
-                        <strong>Author:</strong> S. Russel<br>
-                        <strong>Publication:</strong> Princeton Hall
-                    </td>
-                    <td>$63</td>
-                    <td>
-                        <button class="btn" onclick="addToCart('AI', 63)">
-                            Add to cart
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><div class="book-img">Java 2</div></td>
-                    <td>
-                        <strong>Book:</strong> Java 2<br>
-                        <strong>Author:</strong> Watson<br>
-                        <strong>Publication:</strong> BPB Publications
-                    </td>
-                    <td>$35.5</td>
-                    <td>
-                        <button class="btn" onclick="addToCart('Java 2', 35.5)">
-                            Add to cart
-                        </button>
-                    </td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Book Details</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="bookList"></tbody>
             </table>
 
             <p><a href="cart.html">Go to Cart</a></p>
@@ -92,19 +57,187 @@
 </table>
 
 <script>
-function addToCart(name, price) {
+const catalogues = {
+    CSE: {
+        title: "Computer Science Engineering (CSE)",
+        description: "Books for programming, software and computer science.",
+        books: [
+            {
+                name: "XML Bible",
+                author: "Elliotte Rusty Harold",
+                publication: "Wiley",
+                price: 40.5
+            },
+            {
+                name: "Artificial Intelligence: A Modern Approach",
+                author: "Stuart Russell and Peter Norvig",
+                publication: "Pearson",
+                price: 63
+            },
+            {
+                name: "Java: The Complete Reference",
+                author: "Herbert Schildt",
+                publication: "McGraw Hill",
+                price: 35.5
+            }
+        ]
+    },
+
+    ECE: {
+        title: "Electronics and Communication Engineering (ECE)",
+        description: "Books for electronics, circuits and communication systems.",
+        books: [
+            {
+                name: "Electronic Devices and Circuit Theory",
+                author: "Robert L. Boylestad",
+                publication: "Pearson",
+                price: 45
+            },
+            {
+                name: "Microelectronic Circuits",
+                author: "Adel S. Sedra and Kenneth C. Smith",
+                publication: "Oxford University Press",
+                price: 52
+            },
+            {
+                name: "Electronic Communication Systems",
+                author: "George Kennedy",
+                publication: "McGraw Hill",
+                price: 39
+            }
+        ]
+    },
+
+    EEE: {
+        title: "Electrical and Electronics Engineering (EEE)",
+        description: "Books for electrical machines, circuits and power systems.",
+        books: [
+            {
+                name: "A Textbook of Electrical Technology",
+                author: "B. L. Theraja and A. K. Theraja",
+                publication: "S. Chand",
+                price: 42
+            },
+            {
+                name: "Electrical Machinery",
+                author: "P. S. Bimbhra",
+                publication: "Khanna Publishers",
+                price: 38
+            },
+            {
+                name: "Modern Power System Analysis",
+                author: "D. P. Kothari and I. J. Nagrath",
+                publication: "McGraw Hill",
+                price: 48
+            }
+        ]
+    },
+
+    CIVIL: {
+        title: "Civil Engineering (CIVIL)",
+        description: "Books for surveying, construction and structural engineering.",
+        books: [
+            {
+                name: "Building Materials",
+                author: "S. K. Duggal",
+                publication: "New Age International",
+                price: 32
+            },
+            {
+                name: "Surveying",
+                author: "B. C. Punmia",
+                publication: "Laxmi Publications",
+                price: 40
+            },
+            {
+                name: "Strength of Materials",
+                author: "R. K. Bansal",
+                publication: "Laxmi Publications",
+                price: 36
+            }
+        ]
+    }
+};
+
+const params = new URLSearchParams(window.location.search);
+const requestedBranch = (params.get("branch") || "CSE").toUpperCase();
+const branch = catalogues[requestedBranch] ? requestedBranch : "CSE";
+const selectedCatalogue = catalogues[branch];
+
+document.title = selectedCatalogue.title + " - Online Bookstore";
+document.getElementById("branchTitle").textContent =
+    selectedCatalogue.title;
+document.getElementById("branchDescription").textContent =
+    selectedCatalogue.description;
+
+const bookList = document.getElementById("bookList");
+
+selectedCatalogue.books.forEach(book => {
+    const row = document.createElement("tr");
+
+    const cover = document.createElement("td");
+    const coverBox = document.createElement("div");
+    coverBox.className = "book-img";
+    coverBox.textContent = book.name.split(" ").slice(0, 2).join(" ");
+    cover.appendChild(coverBox);
+
+    const details = document.createElement("td");
+    details.innerHTML = "";
+
+    const bookName = document.createElement("strong");
+    bookName.textContent = "Book: ";
+    details.appendChild(bookName);
+    details.appendChild(document.createTextNode(book.name));
+
+    details.appendChild(document.createElement("br"));
+
+    const authorLabel = document.createElement("strong");
+    authorLabel.textContent = "Author: ";
+    details.appendChild(authorLabel);
+    details.appendChild(document.createTextNode(book.author));
+
+    details.appendChild(document.createElement("br"));
+
+    const publicationLabel = document.createElement("strong");
+    publicationLabel.textContent = "Publication: ";
+    details.appendChild(publicationLabel);
+    details.appendChild(document.createTextNode(book.publication));
+
+    const price = document.createElement("td");
+    price.textContent = "$" + book.price.toFixed(2);
+
+    const action = document.createElement("td");
+    const button = document.createElement("button");
+    button.className = "btn";
+    button.textContent = "Add to cart";
+
+    button.addEventListener("click", () => {
+        addToCart(book);
+    });
+
+    action.appendChild(button);
+
+    row.append(cover, details, price, action);
+    bookList.appendChild(row);
+});
+
+function addToCart(book) {
     let cart = JSON.parse(localStorage.getItem("bookCart") || "[]");
 
-    const existing = cart.find(book => book.name === name);
+    const existing = cart.find(item => item.name === book.name);
 
     if (existing) {
         existing.quantity++;
     } else {
-        cart.push({ name: name, price: price, quantity: 1 });
+        cart.push({
+            name: book.name,
+            price: book.price,
+            quantity: 1
+        });
     }
 
     localStorage.setItem("bookCart", JSON.stringify(cart));
-    alert(name + " added to cart!");
+    alert(book.name + " added to cart!");
 }
 </script>
 
