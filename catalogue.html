@@ -175,11 +175,36 @@ const bookList = document.getElementById("bookList");
 selectedCatalogue.books.forEach(book => {
     const row = document.createElement("tr");
 
-    const cover = document.createElement("td");
-    const coverBox = document.createElement("div");
-    coverBox.className = "book-img";
-    coverBox.textContent = book.name.split(" ").slice(0, 2).join(" ");
-    cover.appendChild(coverBox);
+    
+const cover = document.createElement("td");
+const coverImg = document.createElement("img");
+coverImg.className = "book-img";
+coverImg.alt = book.name + " cover";
+
+const query = encodeURIComponent(book.name);
+fetch("https://www.googleapis.com/books/v1/volumes?q=" + query)
+    .then(response => response.json())
+    .then(data => {
+        const match = (data.items || []).find(
+            item => item.volumeInfo &&
+                    item.volumeInfo.imageLinks
+        );
+
+        if (match) {
+            coverImg.src =
+                (match.volumeInfo.imageLinks.thumbnail ||
+                 match.volumeInfo.imageLinks.smallThumbnail)
+                .replace(/^http:/, "https:");
+        } else {
+            coverImg.alt = "Cover unavailable: " + book.name;
+        }
+    })
+    .catch(() => {
+        coverImg.alt = "Cover unavailable: " + book.name;
+    });
+
+cover.appendChild(coverImg);
+
 
     const details = document.createElement("td");
     details.innerHTML = "";
