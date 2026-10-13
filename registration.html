@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Online Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<table>
+    <tr>
+        <td class="header-bg logo">LOGO</td>
+        <td class="header-bg">Online Bookstore</td>
+    </tr>
+    <tr class="nav-bg">
+        <td colspan="2">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="registration.html">Registration</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="sidebar">
+            <ul>
+                <li><a href="catalogue.html">CSE</a></li>
+                <li><a href="catalogue.html">ECE</a></li>
+                <li><a href="catalogue.html">EEE</a></li>
+                <li><a href="catalogue.html">CIVIL</a></li>
+            </ul>
+        </td>
+        <td class="main-content">
+            <h2>Registration Page</h2>
+
+            <form onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="regName">Name:</label>
+                    <input type="text" id="regName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPass">Password:</label>
+                    <input type="password" id="regPass" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regEmail">E-mail ID:</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPhone">Phone Number:</label>
+                    <input type="tel" id="regPhone">
+                </div>
+
+                <div class="form-group">
+                    <label>Sex:</label>
+                    <input type="radio" name="sex" value="Male"> Male
+                    <input type="radio" name="sex" value="Female"> Female
+                </div>
+
+                <div class="form-group">
+                    <label>Date of Birth:</label>
+                    <select required>
+                        <option value="">Day</option>
+                        <script>
+                            for (let i = 1; i <= 31; i++) {
+                                document.write(
+                                    '<option value="' + i + '">' + i + '</option>'
+                                );
+                            }
+                        </script>
+                    </select>
+
+                    <select required>
+                        <option value="">Month</option>
+                        <option>Jan</option><option>Feb</option>
+                        <option>Mar</option><option>Apr</option>
+                        <option>May</option><option>Jun</option>
+                        <option>Jul</option><option>Aug</option>
+                        <option>Sep</option><option>Oct</option>
+                        <option>Nov</option><option>Dec</option>
+                    </select>
+
+                    <select required>
+                        <option value="">Year</option>
+                        <script>
+                            for (let y = 2010; y >= 1970; y--) {
+                                document.write(
+                                    '<option value="' + y + '">' + y + '</option>'
+                                );
+                            }
+                        </script>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Languages Known:</label>
+                    <input type="checkbox" name="language" value="English"> English
+                    <input type="checkbox" name="language" value="Hindi"> Hindi
+                    <input type="checkbox" name="language" value="Telugu"> Telugu
+                    <input type="checkbox" name="language" value="Tamil"> Tamil
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label><br>
+                    <textarea id="address" rows="4" cols="35"></textarea>
+                </div>
+
+                <button type="submit" class="btn">Register</button>
+                <button type="reset" class="btn">Reset</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<script>
+function validateForm() {
+    const name = document.getElementById("regName").value.trim();
+    const pass = document.getElementById("regPass").value;
+
+    const nameRegex = /^[A-Za-z]+$/;
+
+    if (name.length < 6 || !nameRegex.test(name)) {
+        alert("Name must contain alphabets only and be at least 6 characters long.");
+        return false;
+    }
+
+    if (pass.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        return false;
+    }
+
+    alert("Registration Successful!");
+    return false;
+}
+</script>
+
+</body>
+</html>
