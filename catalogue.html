@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue - Online Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<table>
+    <tr>
+        <td class="header-bg logo">LOGO</td>
+        <td class="header-bg">Online Bookstore</td>
+    </tr>
+    <tr class="nav-bg">
+        <td colspan="2">
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="registration.html">Registration</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart</a>
+        </td>
+    </tr>
+    <tr>
+        <td class="sidebar">
+            <ul>
+                <li><a href="catalogue.html">CSE</a></li>
+                <li><a href="catalogue.html">ECE</a></li>
+                <li><a href="catalogue.html">EEE</a></li>
+                <li><a href="catalogue.html">CIVIL</a></li>
+            </ul>
+        </td>
+        <td class="main-content">
+            <h2>Catalogue (CSE Books)</h2>
+
+            <table class="catalogue-table">
+                <tr>
+                    <th>Cover</th>
+                    <th>Book Details</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><div class="book-img">XML</div></td>
+                    <td>
+                        <strong>Book:</strong> XML Bible<br>
+                        <strong>Author:</strong> Winston<br>
+                        <strong>Publication:</strong> Wiley
+                    </td>
+                    <td>$40.5</td>
+                    <td>
+                        <button class="btn" onclick="addToCart('XML Bible', 40.5)">
+                            Add to cart
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><div class="book-img">AI</div></td>
+                    <td>
+                        <strong>Book:</strong> AI<br>
+                        <strong>Author:</strong> S. Russel<br>
+                        <strong>Publication:</strong> Princeton Hall
+                    </td>
+                    <td>$63</td>
+                    <td>
+                        <button class="btn" onclick="addToCart('AI', 63)">
+                            Add to cart
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><div class="book-img">Java 2</div></td>
+                    <td>
+                        <strong>Book:</strong> Java 2<br>
+                        <strong>Author:</strong> Watson<br>
+                        <strong>Publication:</strong> BPB Publications
+                    </td>
+                    <td>$35.5</td>
+                    <td>
+                        <button class="btn" onclick="addToCart('Java 2', 35.5)">
+                            Add to cart
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+            <p><a href="cart.html">Go to Cart</a></p>
+        </td>
+    </tr>
+</table>
+
+<script>
+function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("bookCart") || "[]");
+
+    const existing = cart.find(book => book.name === name);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cart.push({ name: name, price: price, quantity: 1 });
+    }
+
+    localStorage.setItem("bookCart", JSON.stringify(cart));
+    alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>
