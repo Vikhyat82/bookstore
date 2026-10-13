@@ -175,35 +175,52 @@ const bookList = document.getElementById("bookList");
 selectedCatalogue.books.forEach(book => {
     const row = document.createElement("tr");
 
-    
+
 const cover = document.createElement("td");
 const coverImg = document.createElement("img");
+
 coverImg.className = "book-img";
 coverImg.alt = book.name + " cover";
+coverImg.src =
+    "https://placehold.co/120x160/f2f2f2/333333?text=" +
+    encodeURIComponent(book.name);
 
-const query = encodeURIComponent(book.name);
-fetch("https://www.googleapis.com/books/v1/volumes?q=" + query)
-    .then(response => response.json())
+fetch(
+    "https://www.googleapis.com/books/v1/volumes?q=" +
+    encodeURIComponent("intitle:" + book.name) +
+    "&maxResults=10"
+)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Image request failed");
+        }
+        return response.json();
+    })
     .then(data => {
-        const match = (data.items || []).find(
-            item => item.volumeInfo &&
-                    item.volumeInfo.imageLinks
+        const books = data.items || [];
+
+        const match = books.find(item =>
+            item.volumeInfo &&
+            item.volumeInfo.imageLinks &&
+            (
+                item.volumeInfo.imageLinks.thumbnail ||
+                item.volumeInfo.imageLinks.smallThumbnail
+            )
         );
 
         if (match) {
-            coverImg.src =
-                (match.volumeInfo.imageLinks.thumbnail ||
-                 match.volumeInfo.imageLinks.smallThumbnail)
-                .replace(/^http:/, "https:");
-        } else {
-            coverImg.alt = "Cover unavailable: " + book.name;
+            const images = match.volumeInfo.imageLinks;
+            coverImg.src = (
+                images.thumbnail || images.smallThumbnail
+            ).replace(/^http:/, "https:");
         }
     })
-    .catch(() => {
-        coverImg.alt = "Cover unavailable: " + book.name;
+    .catch(error => {
+        console.log("Could not load cover for:", book.name, error);
     });
 
 cover.appendChild(coverImg);
+
 
 
     const details = document.createElement("td");
