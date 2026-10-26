@@ -151,3 +151,69 @@ select, textarea {
         margin-bottom: 5px;
     }
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+    color: darkblue;
+    text-align: center;
+}
+
+p {
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    color: darkgreen;
+    line-height: 1.6;
+}
+
+td {
+    padding: 15px;
+    border: 1px solid black;
+}
+
+
+.header-bg {
+    background-color: lightblue;
+    color: darkblue;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+a {
+    color: blue;
+    font-size: 16px;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.main-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+}
+
+button {
+    background-color: darkblue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: green;
+}
