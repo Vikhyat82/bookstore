@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #172554;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+nav {
+    background-color: #2563eb;
+    text-align: center;
+    padding: 12px;
+    position: sticky;
+    top: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #fde68a;
+}
+
+section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+    scroll-margin-top: 60px;
+}
+
+section h2 {
+    color: #1d4ed8;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+    background-color: #dbeafe;
+    max-width: none;
+}
+
+.hero h2 {
+    font-size: 32px;
+}
+
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #172554;
+}
+
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #ccc;
+    font-weight: bold;
+    color: #1d4ed8;
+}
+
+.project {
+    background-color: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 5px solid #2563eb;
+    border-radius: 5px;
+}
+
+.project h3 {
+    color: #172554;
+    margin-bottom: 8px;
+}
+
+#contact {
+    text-align: center;
+}
+
+footer {
+    background-color: #172554;
+    color: white;
+    text-align: center;
+    padding: 18px;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+        font-size: 14px;
+    }
+
+    .hero h2 {
+        font-size: 26px;
+    }
+}
