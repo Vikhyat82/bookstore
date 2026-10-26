@@ -1,4 +1,4 @@
-/* Background properties */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -12,7 +12,7 @@ body {
     background-size: cover;
 }
 
-/* Main content */
+
 .container {
     max-width: 850px;
     margin: 20px auto;
@@ -22,7 +22,6 @@ body {
     border-radius: 10px;
 }
 
-/* Headings */
 h1 {
     font-family: Georgia, serif;
     color: #92400e;
@@ -33,7 +32,6 @@ h2, h3 {
     color: #b45309;
 }
 
-/* Paragraphs and lists */
 p, li {
     font-size: 16px;
     line-height: 1.6;
@@ -43,7 +41,6 @@ li {
     margin-bottom: 8px;
 }
 
-/* Hyperlink pseudo-classes */
 .links a:link {
     color: blue;
 }
@@ -61,7 +58,6 @@ li {
     color: green;
 }
 
-/* Link appearance */
 .links a {
     display: inline-block;
     margin: 10px;
@@ -72,7 +68,6 @@ li {
     text-decoration: none;
 }
 
-/* Information box */
 .note {
     margin-top: 25px;
     padding: 15px;
@@ -80,7 +75,6 @@ li {
     border-left: 5px solid #b45309;
 }
 
-/* Footer */
 footer {
     margin-top: 25px;
     padding: 12px;
