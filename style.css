@@ -151,31 +151,4 @@ select, textarea {
         margin-bottom: 5px;
     }
 }
-h1, h2, h3 {
-    font-family: Georgia, serif;
-}
 
-p, td, th, label, input, button {
-    font-family: Arial, sans-serif;
-}
-
-
-body {
-    background-image: url("background.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-
-h1 {
-    font-weight: bold;
-    text-align: center;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-
-}
